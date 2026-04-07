@@ -1,0 +1,28 @@
+{
+  "name": "payment-state-machine",
+  "version": "1.0.0",
+  "description": "Reference implementation of a payment lifecycle state machine for POS and processor-integrated systems.",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "tsc --noEmit",
+    "scenarios": "tsx examples/run-scenarios.ts"
+  },
+  "engines": {
+    "node": ">=18.19"
+  },
+  "dependencies": {
+    "zod": "^4.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0"
+  }
+}

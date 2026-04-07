@@ -1,0 +1,6 @@
+flowchart LR
+    A[CAPTURED] --> B[RECONCILIATION_PENDING]
+    B -->|processor total matches| C[CAPTURED (confirmed)]
+    B -->|processor total mismatched| D[RECONCILIATION_MISMATCH]
+    D -->|manual retry| B
+    D -->|write-off / investigation| E[Operational queue]

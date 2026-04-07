@@ -1,0 +1,11 @@
+flowchart TD
+    subgraph Terminal
+      A[Sale queued locally] --> B[OFFLINE_QUEUED]
+    end
+    B --> C[Connectivity restored]
+    C --> D[RETRY_REQUESTED => OFFLINE_SYNCING]
+    D -->|success| E[OFFLINE_SYNC_SUCCEEDED]
+    D -->|failure| F[OFFLINE_SYNC_FAILED]
+    E --> G[CAPTURED]
+    G --> H[SETTLEMENT_RECEIVED => RECONCILIATION_PENDING]
+    F --> I[OFFLINE_REJECTED]
