@@ -32,8 +32,16 @@ Payments are long-running, multi-party workflows. Explicit states make it possib
 - Not a toy FSM.
 - Focused on financial correctness under edge cases.
 
-## Core Concept – Reversible Drift Window
-The Reversible Drift Window is the span between provisional success (auth accepted, capture requested, offline queued) and settlement truth where outcomes can still reverse. This repo keeps that window explicit with interim states like `CAPTURE_PENDING`, `OFFLINE_QUEUED`, and `RECONCILIATION_PENDING`, and advances or rolls back only when processor sync or settlement results arrive. Idempotent event handling and reconciliation-aware transitions keep receipts, inventory, and ledgers aligned even when the processor disagrees later.
+## Core Concept: Settlement Truth vs Application Truth
+
+Payment systems operate with two conflicting realities:
+
+- Application Truth: what the POS or app believes happened
+- Settlement Truth: what the processor actually finalized
+
+These two diverge under retries, offline execution, and network failures.
+
+This repository models that divergence explicitly and provides a state machine to reconcile both states safely.
 
 ## Architecture overview
 - **Domain**: value objects (`money`, ids), enums, schemas.
