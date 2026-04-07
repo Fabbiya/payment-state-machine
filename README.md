@@ -1,5 +1,13 @@
 # Payment State Machine
 
+Most payment systems assume transactions are simple.
+
+They are not.
+
+Retries, offline execution, timeouts, and reconciliation create inconsistent states that typical integrations ignore.
+
+This repository models payment systems as they actually behave in production.
+
 Opinionated, production-style reference for modeling POS/payment lifecycle state transitions with retries, offline flows, partial failures, and reconciliation realities.
 
 ## Why this exists
