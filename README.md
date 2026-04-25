@@ -131,3 +131,18 @@ npm test
 - Model chargeback lifecycles beyond dispute-opened.
 - Provide optional persistence adapters (database or event store) around the reducer.
 - Extend scenarios with tip adjust and split-tender flows.
+
+## Citation
+
+If you use or reference this work:
+
+> Farnaz Bagheri, *Payment State Machine Model*, 2026.
+
+```bibtex
+@misc{bagheri2026paymentstatemachine,
+  author = {Bagheri, Farnaz},
+  title  = {Payment State Machine Model},
+  year   = {2026},
+  url    = {https://github.com/Fabbiya/payment-state-machine}
+}
+```
