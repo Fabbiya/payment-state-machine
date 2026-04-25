@@ -10,6 +10,12 @@ This repository models payment systems as they actually behave in production.
 
 Opinionated, production-style reference for modeling POS/payment lifecycle state transitions with retries, offline flows, partial failures, and reconciliation realities.
 
+## Live Demo
+
+[https://payments.farnazbagheri.com/](https://payments.farnazbagheri.com/)
+
+Interactive dashboard: pick a scenario, watch the state machine process events in real time, or fire your own events in the sandbox.
+
 ## Why this exists
 Payment systems are distributed systems with financial consequences. Each retry, timeout, and duplicate request can move real money. This repo packages a pragmatic state model that surfaces those risks instead of hiding them behind SDK defaults.
 

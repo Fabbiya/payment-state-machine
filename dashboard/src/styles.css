@@ -18,11 +18,14 @@
 html, body, #root {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100%;
   background: var(--bg);
   color: var(--text);
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-text-size-adjust: 100%;
 }
+
+body { overflow-x: hidden; }
 
 .app {
   display: flex;
@@ -661,7 +664,181 @@ html, body, #root {
   font-size: 12px;
 }
 
+/* ---------- Tablet ---------- */
 @media (max-width: 1100px) {
-  .app-grid { grid-template-columns: 1fr; grid-template-rows: auto 400px auto; }
-  .col-left, .col-right { overflow-y: visible; }
+  .app {
+    height: auto;
+    min-height: 100vh;
+  }
+  .app-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 480px auto;
+  }
+  .col-left,
+  .col-right {
+    overflow-y: visible;
+  }
+  .timeline,
+  .event-grid,
+  .event-list {
+    max-height: none;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .app {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  /* Header stacks vertically; GitHub button becomes full-width */
+  .app-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .app-header h1 {
+    font-size: 16px;
+  }
+  .repo-link {
+    justify-content: center;
+    width: 100%;
+    padding: 10px 14px;
+  }
+
+  /* Hero banner: tighter padding, smaller text */
+  .hero-banner {
+    padding: 14px 14px;
+  }
+  .hero-line {
+    font-size: 13px;
+  }
+  .hero-line.strong {
+    font-size: 15px;
+  }
+  .hero-bullets {
+    gap: 6px 8px;
+  }
+  .hero-bullets li {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+  .hero-callout {
+    padding: 10px 12px;
+  }
+  .hero-callout-line {
+    font-size: 12px;
+  }
+
+  .hero-thesis-line {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .byline {
+    font-size: 13px;
+    gap: 6px;
+  }
+  .byline-sep { display: none; }
+  .paper-tag {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+
+  /* Grid: pure single column, state-graph needs explicit height */
+  .app-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 10px;
+  }
+  .col-center {
+    height: 380px;
+  }
+  .graph-card {
+    height: 380px;
+  }
+
+  /* Cards: tighter padding */
+  .card {
+    padding: 10px;
+    gap: 6px;
+  }
+  .card-title {
+    font-size: 12px;
+  }
+
+  /* Scenario player */
+  .player-controls {
+    flex-wrap: wrap;
+  }
+  .event-list {
+    max-height: 180px;
+  }
+  .event-row {
+    font-size: 10px;
+  }
+
+  /* Current state pill: smaller */
+  .state-pill {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+  .kv-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  /* Truth pane: stack the two columns vertically */
+  .truth-grid {
+    grid-template-columns: 1fr;
+  }
+  .core-concept-banner {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+  .core-concept-prefix {
+    font-size: 10px;
+  }
+  .core-concept-title {
+    font-size: 13px;
+  }
+
+  /* Event timeline: wrap actor + event */
+  .tl-row {
+    grid-template-columns: 60px 70px 1fr;
+    gap: 4px;
+    padding: 5px 6px;
+  }
+  .tl-time { font-size: 10px; }
+  .tl-event { font-size: 11px; }
+  .tl-transition {
+    padding-left: 0;
+    margin-top: 4px;
+  }
+  .tl-state-chip { font-size: 9px; padding: 1px 5px; }
+  .tl-idem,
+  .tl-note {
+    padding-left: 0;
+  }
+
+  /* Sandbox event grid: two columns get tight; keep two but shrink */
+  .event-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .app-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 10px 12px;
+  }
+}
+
+/* Use dynamic viewport height where supported (avoids mobile URL-bar jumps) */
+@supports (height: 100dvh) {
+  .app {
+    min-height: 100dvh;
+  }
 }
