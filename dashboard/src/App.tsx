@@ -131,7 +131,14 @@ export default function App() {
           <p className="byline">
             By <strong>Farnaz Bagheri</strong>
             <span className="byline-sep">·</span>
-            <span className="paper-tag">Paper (under review on SSRN)</span>
+            <a
+              className="paper-tag"
+              href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6611041"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Paper (under review on SSRN)
+            </a>
           </p>
           <p className="muted small">
             19 states · 21 events · pure reducer. Pick a scenario, watch the lifecycle, or fire your
